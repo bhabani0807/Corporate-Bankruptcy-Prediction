@@ -1,3 +1,5 @@
+## Corporate Bankruptcy Prediction
+
 The **Corporate Bankruptcy Prediction App** is a Machine Learning–based project designed to predict whether a company is at risk of bankruptcy using its financial performance indicators.
 
 Bankruptcy prediction is an important task in the finance industry because early identification of financially distressed companies helps investors, stakeholders, and organizations reduce risk and make better business decisions.
