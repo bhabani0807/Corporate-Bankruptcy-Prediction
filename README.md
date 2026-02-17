@@ -1,134 +1,85 @@
-# 🏦 Corporate Bankruptcy Prediction App
+The **Corporate Bankruptcy Prediction App** is a Machine Learning–based project designed to predict whether a company is at risk of bankruptcy using its financial performance indicators.
 
-A Machine Learning–based web application that predicts whether a company is likely to go bankrupt or not using financial indicators.  
-This project includes data preprocessing, outlier detection, model training, hyperparameter tuning, and deployment using Streamlit.
+Bankruptcy prediction is an important task in the finance industry because early identification of financially distressed companies helps investors, stakeholders, and organizations reduce risk and make better business decisions.
 
----
+This project uses a structured dataset containing multiple financial ratios and company-related attributes. The goal is to build an intelligent system that can classify companies into two categories:
 
-## 📌 Project Overview
-
-Corporate bankruptcy prediction plays a major role in financial risk analysis.  
-This project helps identify companies at risk of bankruptcy based on key financial ratios and performance indicators.
-
-The workflow includes:
-
-- Data Cleaning & Preprocessing  
-- Feature Scaling  
-- Outlier Detection  
-- Decision Tree Model Training  
-- Hyperparameter Optimization  
-- Streamlit Web Deployment  
+- **Bankrupt (High Risk)**
+- **Non-Bankrupt (Low Risk)**
 
 ---
 
-## 📂 Project Structure
+## 🎯 Objective of the Project
 
+The main objective of this project is to develop an accurate and reliable bankruptcy prediction model that can:
 
-📁 Bankruptcy-Prediction-App
-│── bankapp.py
-│── bank_new.csv
-│── DS- P410 Predicting Corporate Bankruptcy.ipynb
-│── README.md
-
+- Analyze corporate financial data  
+- Detect companies that may face bankruptcy in the future  
+- Support financial risk assessment and decision-making  
 
 ---
 
-## 🧠 Machine Learning Workflow
+## 🧠 Approach & Methodology
 
-### 1️⃣ Dataset Loading
+The project follows a complete Machine Learning pipeline:
 
-```python
-df = pd.read_csv("bank_new.csv")
-2️⃣ Feature & Target Split
+### ✅ Data Preprocessing
+The dataset is loaded and divided into input features and the target column (`Bankrupt?`).
 
-Target Column: Bankrupt?
+### ✅ Feature Scaling
+Financial indicators are standardized using **StandardScaler** to improve model performance.
 
-Feature Columns: Financial ratios & indicators
+### ✅ Outlier Detection
+Outliers are removed using **Isolation Forest**, ensuring that abnormal financial patterns do not negatively affect the model training process.
 
-y = df[['Bankrupt?']]
-X = df.drop('Bankrupt?', axis=1)
-3️⃣ Feature Scaling
+### ✅ Model Training
+A **Decision Tree Classifier** is used to train the prediction model.
 
-StandardScaler is used to normalize the dataset:
+### ✅ Hyperparameter Optimization
+To improve accuracy, **GridSearchCV** is applied to find the best parameters such as:
 
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-4️⃣ Outlier Detection
+- Maximum tree depth  
+- Splitting criterion (Gini / Entropy)
 
-Isolation Forest removes anomalies from the dataset:
+### ✅ Model Evaluation
+The model is evaluated using key classification metrics:
 
-iso_forest = IsolationForest(contamination=0.01)
-outliers = iso_forest.fit_predict(X_scaled)
-5️⃣ Model Training & Hyperparameter Tuning
+- Accuracy  
+- Precision  
+- Recall  
+- F1 Score  
 
-Decision Tree Classifier is trained using GridSearchCV:
+---
 
-param_grids = {
-    'max_depth': [None, 10, 20, 30, 40, 50],
-    'criterion': ['gini', 'entropy']
-}
+## 🌐 Deployment as a Web Application
 
-grid_search = GridSearchCV(dtc, param_grids, cv=5)
-grid_search.fit(X_train, y_train)
-6️⃣ Model Evaluation Metrics
+To make the project user-friendly, the trained model is deployed using **Streamlit**.
 
-The model is evaluated using:
+The application allows users to:
 
-Accuracy
+- Enter a company name  
+- Input financial feature values  
+- Get an instant prediction result  
 
-Precision
+The final output clearly shows whether the company is:
 
-Recall
+- **Likely to go Bankrupt**
+- **Not likely to go Bankrupt**
 
-F1 Score
+---
 
-🌐 Streamlit Web App Deployment
+## 🛠️ Tools & Technologies Used
 
-The project is deployed as an interactive Streamlit app where users can:
+- **Python**
+- **Pandas & NumPy**
+- **Scikit-learn**
+- **Decision Tree Classifier**
+- **Isolation Forest**
+- **Streamlit**
 
-✅ Enter company name
-✅ Input financial feature values
-✅ Predict bankruptcy instantly
+---
 
-Run the app:
+## 🚀 Conclusion
 
-streamlit run bankapp.py
-🛠️ Technologies Used
-
-Python
-
-Pandas
-
-Scikit-learn
-
-Streamlit
-
-Isolation Forest
-
-Decision Tree Classifier
-
-⚙️ Installation & Setup
-Step 1: Clone the Repository
-git clone https://github.com/your-username/bankruptcy-prediction-app.git
-cd bankruptcy-prediction-app
-Step 2: Install Dependencies
-pip install -r requirements.txt
-Step 3: Run the Application
-streamlit run bankapp.py
-🚀 Future Enhancements
-
-Add advanced models like Random Forest, XGBoost
-
-Improve Streamlit UI with better design
-
-Save trained model using joblib
-
-Deploy app online using Streamlit Cloud
-
-👨‍💻 Author
-
-Bhabani Sankar Barik
-Aspiring Data Scientist | Machine Learning Enthusiast
-
-📍 India
-💼 Interested in Data Science & AI Projects
+This project demonstrates how Machine Learning can be effectively applied in the financial domain to predict corporate bankruptcy.  
+By combining preprocessing, outlier detection, model optimization, and deployment, this application provides a complete end-to-end solution for bankruptcy risk prediction.
